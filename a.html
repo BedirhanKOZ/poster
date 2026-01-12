@@ -6,7 +6,11 @@
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 
-      /* --- SAYFA AYARLARI (A1) --- */
+      /* --- TEMEL AYARLAR --- */
+      * {
+        box-sizing: border-box; /* Padding ve border'ın genişliği bozmamasını sağlar */
+      }
+
       @page {
         size: A1 portrait;
         margin: 0;
@@ -29,8 +33,8 @@
         background-color: white;
         display: flex;
         flex-direction: column;
-        box-sizing: border-box;
         padding: 15mm;
+        overflow: hidden; /* Sayfa dışına taşmayı engeller */
       }
 
       /* --- HEADER --- */
@@ -41,7 +45,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 5mm;
+        margin-bottom: 8mm;
         flex-shrink: 0;
       }
 
@@ -51,7 +55,7 @@
       }
       .logo-box img {
         width: 100%;
-        max-width: 180mm;
+        max-width: 150mm;
         height: auto;
       }
       .title-box {
@@ -59,45 +63,45 @@
         text-align: center;
       }
       .uni-title {
-        font-size: 28pt;
+        font-size: 26pt;
         font-weight: 700;
         color: #004078;
         margin-bottom: 2mm;
       }
       .project-name {
-        font-size: 48pt;
+        font-size: 44pt;
         font-weight: 900;
         color: #a6192e;
         line-height: 1.1;
-        margin: 5mm 0;
+        margin: 4mm 0;
       }
       .student-list {
         display: flex;
         justify-content: center;
-        gap: 15mm;
-        margin-top: 5mm;
-        font-size: 18pt;
+        gap: 12mm;
+        margin-top: 4mm;
+        font-size: 17pt;
         font-weight: 500;
         color: #333;
       }
       .student-item span {
         display: block;
-        font-size: 14pt;
+        font-size: 13pt;
         color: #666;
         margin-top: 1mm;
       }
 
-      /* --- UYGULAMA AKIŞI ALANI --- */
+      /* --- UYGULAMA AKIŞI (ÜST) --- */
       .flow-section {
-        width: 98.2%;
+        width: 100%;
         background-color: #f8f9fa;
         border: 1px solid #ddd;
         border-radius: 4mm;
-        padding: 5mm;
-        margin-bottom: 10mm;
+        padding: 6mm;
+        margin-bottom: 8mm;
         display: flex;
         flex-direction: column;
-        gap: 5mm;
+        gap: 6mm;
       }
 
       .flow-header {
@@ -106,36 +110,33 @@
         font-weight: 900;
         color: #004078;
         text-transform: uppercase;
-        border-bottom: 2px solid #a6192e;
+        border-bottom: 3px solid #a6192e;
         display: inline-block;
-        margin: 0 auto 1mm auto;
+        margin: 0 auto 2mm auto;
         padding-bottom: 2mm;
       }
 
       .flow-row {
         display: flex;
         justify-content: space-between;
-        gap: 5mm;
-        height: 160mm;
+        gap: 10mm; /* Alt kısımdaki main-content gap ile aynı olmalı */
+        height: 155mm;
       }
 
-      /* Grup Yapısı */
       .flow-group {
-        flex: 1;
+        flex: 1; /* Tam olarak yarı genişlik */
         background: white;
         border: 1px solid #eee;
         border-radius: 3mm;
-        padding: 0 8mm;
+        padding: 0 6mm;
         display: flex;
         align-items: center;
         justify-content: space-between;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        box-sizing: border-box; /* 🔴 KRİTİK */
-        overflow: hidden; /* 🔒 Güvenlik kilidi */
       }
 
       .flow-img {
-        height: 94%;
+        height: 92%;
         max-width: 32%;
         object-fit: contain;
         border: 1px solid #ccc;
@@ -143,15 +144,14 @@
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
       }
 
-      /* Ortadaki Metin Alanı */
       .flow-text-container {
         flex: 1;
         height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: 10mm;
-        padding: 0 6mm;
+        gap: 8mm;
+        padding: 0 4mm;
       }
 
       .text-item {
@@ -170,11 +170,10 @@
 
       .flow-step-title {
         font-weight: 900;
-        font-size: 18pt;
+        font-size: 16pt;
         display: block;
-        margin-bottom: 2mm;
+        margin-bottom: 1mm;
       }
-
       .flow-step-title.red {
         color: #a6192e;
       }
@@ -183,102 +182,77 @@
       }
 
       .flow-desc {
-        font-size: 13pt;
+        font-size: 12pt;
         color: #333;
-        line-height: 1.4;
+        line-height: 1.3;
         display: block;
       }
 
-      /* --- ANA İÇERİK --- Mimari */
+      /* --- ANA İÇERİK (ALT) --- */
       .main-content {
         display: flex;
-        gap: 10mm;
+        gap: 10mm; /* Üstteki flow-row gap ile aynı */
         flex-grow: 1;
-        flex: 1;
-        display: flex;
-        max-height: 295mm;
-        overflow: hidden;
+        width: 100%;
       }
 
-      .left-column {
-        flex: 0 0 50%;
+      .left-column,
+      .right-column {
+        flex: 1; /* Üstteki flow-group'lar ile dikeyde tam hizalanır */
         display: flex;
         flex-direction: column;
-        gap: 1mm;
-      }
-
-      /* MİMARİ KUTUSU */
-      .architecture-box {
-        width: 100%;
-        border-radius: 3mm;
-        flex: 1;
-        display: flex;
-        border: 3px solid #004078;
-        background-color: #fff;
-        padding: 6mm;
-        box-sizing: border-box;
-        text-align: center;
-        flex-direction: column;
-        margin-bottom: 6mm;
-      }
-
-      .architecture-title {
-        font-size: 18pt;
-        font-weight: 900;
-        color: #004078;
-        text-transform: uppercase;
-        border-bottom: 2px solid #a6192e;
-        padding-bottom: 3mm;
-      }
-
-      .architecture-box img {
-        width: 100%;
-        height: auto;
-        max-height: 100%;
-        object-fit: contain;
-        flex-grow: 1;
-        border-radius: 3mm;
-      }
-
-      /* YAPAY ZEKA KUTUSU */
-      .ai-box {
-        width: 200%;
-        flex: 0 0 auto;
-        height: 70mm;
-        border: 3px solid #004078;
-        background-color: #fff;
-        border-radius: 3mm;
-        padding: 4mm;
-        box-sizing: border-box;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .ai-title {
-        font-size: 18pt;
-        font-weight: 900;
-        color: #004078;
-        text-transform: uppercase;
-        margin-bottom: 3mm;
-        border-bottom: 2px solid #a6192e;
-        padding-bottom: 2mm;
-      }
-
-      .ai-box img {
-        width: 100%;
-        height: 60mm;
-        object-fit: contain;
-        flex-grow: 1;
-      }
-
-      /* TEKNOLOJI KUTULARI (SAĞ ÜST) */
-      .tech-row {
-        display: flex;
         gap: 8mm;
       }
 
-      /* FOOTER */
+      /* KUTU STİLLERİ */
+      .architecture-box,
+      .ai-box,
+      .tech-image-box {
+        width: 100%;
+        border: 3px solid #004078;
+        background-color: #fff;
+        border-radius: 3mm;
+        padding: 5mm;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .architecture-box {
+        flex: 0 0 200mm; /* Mimari görseline daha fazla alan */
+      }
+
+      .ai-box {
+        flex: 1; /* Kalan alanı kaplar */
+      }
+
+      .tech-image-box {
+        flex: 1; /* İki teknoloji kutusu eşit bölünür */
+      }
+
+      .architecture-title,
+      .ai-title,
+      .tech-title {
+        font-size: 18pt;
+        font-weight: 900;
+        color: #004078;
+        text-transform: uppercase;
+        border-bottom: 2px solid #a6192e;
+        padding-bottom: 2mm;
+        margin-bottom: 4mm;
+      }
+
+      /* GÖRSELLERİ SIĞDIRMA */
+      .architecture-box img,
+      .ai-box img,
+      .tech-image-box img {
+        width: 100%;
+        height: auto;
+        max-height: 95%;
+        object-fit: contain;
+        flex-grow: 1;
+      }
+
       .footer {
         margin-top: 5mm;
         border-top: 1px solid #ccc;
@@ -288,70 +262,18 @@
         color: #666;
         flex-shrink: 0;
       }
-
-      /* SAĞ TARAF TEKNOLOJİ GÖRSELLERİ */
-      .right-column {
-        flex: 0 0 50%;
-        display: flex;
-        flex-direction: column;
-        gap: 8mm;
-      }
-
-      /* Her bir görsel kutusu */
-      .tech-image-box {
-        margin-bottom: 5mm;
-        flex: 1;
-        border: 3px solid #004078;
-        border-radius: 3mm;
-        padding: 1mm;
-        box-sizing: border-box;
-        background-color: #fff;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      /* Başlık */
-      .tech-title {
-        font-size: 18pt;
-        font-weight: 900;
-        color: #004078;
-        text-transform: uppercase;
-        margin-bottom: 4mm;
-        border-bottom: 2px solid #a6192e;
-        padding-bottom: 2mm;
-        width: 100%;
-        text-align: center;
-      }
-
-      /* GÖRSELLER – ORAN BOZMADAN SIĞDIR */
-      .tech-image-box img {
-        max-width: 100%;
-        max-height: 100%;
-        height: 85mm;
-        object-fit: contain;
-      }
-
-      .signal-img {
-        transform: scale(0.9);
-        object-fit: contain;
-      }
     </style>
   </head>
   <body>
     <div class="poster-container">
       <header class="header-section">
         <div class="logo-box">
-          <img
-            src="ktuLogo.png"
-            alt="KTÜ Logo"
-            style="width: 420px; height: 420px"
-          />
+          <img src="ktuLogo.png" alt="KTÜ Logo" />
         </div>
         <div class="title-box">
           <div class="uni-title">
-            KARADENİZ TEKNİK ÜNİVERSİTESİ<br /><span
-              style="font-size: 20pt; font-weight: 400; color: #555"
+            KARADENİZ TEKNİK ÜNİVERSİTESİ<br />
+            <span style="font-size: 18pt; font-weight: 400; color: #555"
               >Bilgisayar Mühendisliği Bölümü</span
             >
           </div>
@@ -364,7 +286,11 @@
             <div class="student-item">Alihan Çelik<span>416547</span></div>
             <div
               class="student-item"
-              style="border-left: 2px solid #ccc; padding-left: 10mm"
+              style="
+                border-left: 2px solid #ccc;
+                padding-left: 8mm;
+                margin-top: 1mm;
+              "
             >
               Danışman: Dr. Öğr. Üyesi Bahar Hatipoğlu Yılmaz
             </div>
@@ -379,53 +305,43 @@
         <div class="flow-row">
           <div class="flow-group">
             <img src="1_signup.png" class="flow-img" alt="Kayıt" />
-
             <div class="flow-text-container">
               <div class="text-item">
                 <span class="flow-step-title red">1. Kayıt (Sign Up)</span>
-                <span class="flow-desc">
-                  Kullanıcıdan alınan veriler (Ad, Soyad, E-posta), istemci
-                  tarafında Jetpack Compose validasyonları ile kontrol edilir.
-                  Güvenli kayıt işlemi için veriler HTTPS protokolü üzerinden
-                  backend servisine iletilir.
-                </span>
+                <span class="flow-desc"
+                  >Jetpack Compose validasyonları ile veriler kontrol edilir ve
+                  HTTPS üzerinden iletilir.</span
+                >
               </div>
-
               <div class="text-item right-align">
                 <span class="flow-step-title blue">2. Giriş (Login)</span>
-                <span class="flow-desc">
-                  Kimlik doğrulama süreci JWT (JSON Web Token) standardı ile
-                  yönetilir. Başarılı giriş sonrası alınan token, Android
-                  Keystore sisteminde şifreli olarak saklanır.
-                </span>
+                <span class="flow-desc"
+                  >JWT standardı ile kimlik doğrulama yapılır. Token şifreli
+                  Keystore'da saklanır.</span
+                >
               </div>
             </div>
-
             <img src="2_login.png" class="flow-img" alt="Giriş" />
           </div>
 
           <div class="flow-group">
             <img src="3_add.png" class="flow-img" alt="Ekle" />
-
             <div class="flow-text-container">
               <div class="text-item">
                 <span class="flow-step-title red">3. Kullanıcı Arama</span>
-                <span class="flow-desc">
-                  Spring Boot API üzerinden yapılan sorgularla kullanıcılar
-                  benzersiz "username" ile bulunur. Arama sonuçları anlık olarak
-                  listelenir.
-                </span>
+                <span class="flow-desc"
+                  >Spring Boot API üzerinden benzersiz "username" ile anlık
+                  arama yapılır.</span
+                >
               </div>
-
               <div class="text-item right-align">
                 <span class="flow-step-title blue">4. İstek Yönetimi</span>
-                <span class="flow-desc">
-                  Gelen istekler "Requests" sekmesinde toplanır. Kabul işlemi,
-                  Signal Protokolü'nün X3DH anahtar değişimini tetikler.
-                </span>
+                <span class="flow-desc"
+                  >Gelen istekler kabul edildiğinde Signal Protokolü X3DH süreci
+                  başlar.</span
+                >
               </div>
             </div>
-
             <img src="4_req.png" class="flow-img" alt="İstekler" />
           </div>
         </div>
@@ -433,82 +349,127 @@
         <div class="flow-row">
           <div class="flow-group">
             <img src="5_friends.png" class="flow-img" alt="Liste" />
-
             <div class="flow-text-container">
               <div class="text-item">
                 <span class="flow-step-title red">5. Arkadaş Listesi</span>
-                <span class="flow-desc">
-                  WebSocket (STOMP) bağlantısı sayesinde, arkadaşların
-                  çevrimiçi/çevrimdışı durumları gerçek zamanlı olarak
-                  güncellenir.
-                </span>
+                <span class="flow-desc"
+                  >WebSocket bağlantısı ile çevrimiçi durumları gerçek zamanlı
+                  güncellenir.</span
+                >
               </div>
-
               <div class="text-item right-align">
                 <span class="flow-step-title blue">6. Güvenli Sohbet</span>
-                <span class="flow-desc">
-                  Mesajlar "Double Ratchet" algoritması ile uçtan uca şifrelenir
-                  (E2EE). BERTurk modeli duygu analizi yapar.
-                </span>
+                <span class="flow-desc"
+                  >Double Ratchet ile uçtan uca şifreleme ve BERTurk ile duygu
+                  analizi yapılır.</span
+                >
               </div>
             </div>
-
             <img src="6_chat.png" class="flow-img" alt="Sohbet" />
           </div>
 
           <div class="flow-group">
             <img src="7_calls.png" class="flow-img" alt="Arama" />
-
             <div class="flow-text-container">
               <div class="text-item">
                 <span class="flow-step-title red">7. WebRTC Aramalar</span>
-                <span class="flow-desc">
-                  Sesli ve görüntülü görüşmeler, WebRTC teknolojisi ile P2P
-                  olarak gerçekleştirilir.
-                </span>
+                <span class="flow-desc"
+                  >Sesli ve görüntülü görüşmeler P2P olarak yüksek kalitede
+                  gerçekleştirilir.</span
+                >
               </div>
-
               <div class="text-item right-align">
                 <span class="flow-step-title blue">8. Profil & Veri</span>
-                <span class="flow-desc">
-                  Kullanıcılar profil bilgilerini güncelleyebilir. Sohbet
-                  geçmişi yerel Room veritabanında saklanır.
-                </span>
+                <span class="flow-desc"
+                  >Profil yönetimi ve yerel Room veritabanı ile mesaj geçmişi
+                  saklanır.</span
+                >
               </div>
             </div>
-
             <img src="8_settings.png" class="flow-img" alt="Ayarlar" />
           </div>
         </div>
       </div>
 
       <div class="main-content">
-        <!-- SOL TARAF (AYNEN KALIYOR) -->
         <div class="left-column">
           <div class="architecture-box">
             <div class="architecture-title">Sistem Mimarisi</div>
             <img src="mimari2.jpg" alt="Mimari Diyagram" />
           </div>
+
           <div class="ai-box">
-            <div class="ai-title">Yapay Zeka - Duygu Analizi</div>
-            <img src="bertUrk.png" alt="BERTurk Model" />
+            <div class="ai-title">Uçtan Uca Şifreleme (E2EE)</div>
+            <img src="signal-protocol.png" alt="Signal Protocol Diagram" />
+            <div
+              class="text-item"
+              style="
+                margin-top: 10px;
+                border-left: 4px solid #2ecc71;
+                padding-left: 15px;
+              "
+            >
+              <h4 style="color: #2ecc71; margin-bottom: 5px; font-size: 16pt">
+                Signal Protokolü
+              </h4>
+              <p class="flow-desc" style="font-size: 14pt; line-height: 1.3">
+                <b>X3DH</b> ve <b>Double Ratchet</b> algoritmaları ile mesaj
+                bazlı şifreleme anahtarları türetilerek tam gizlilik sağlanır.
+              </p>
+            </div>
           </div>
         </div>
 
-        <!-- SAĞ TARAF (YENİ) -->
-        <div class="right-columntech-image-box">
+        <div class="right-column">
           <div class="tech-image-box">
             <div class="tech-title">WebRTC İletişim Mimarisi</div>
             <img src="webRTC.png" alt="WebRTC Diagram" />
+            <div
+              class="text-item"
+              style="
+                margin-top: 10px;
+                border-left: 4px solid #a6192e;
+                padding-left: 15px;
+                text-align: left;
+              "
+            >
+              <h4 style="color: #a6192e; margin-bottom: 5px; font-size: 16pt">
+                P2P İletişim
+              </h4>
+              <p class="flow-desc" style="font-size: 14pt; line-height: 1.3">
+                Sesli ve görüntülü verilerin doğrudan cihazlar arası, düşük
+                gecikmeli ve güvenli iletimini sağlar.
+              </p>
+            </div>
           </div>
 
           <div class="tech-image-box">
-            <div class="tech-title">Signal Protocol – Uçtan Uca Şifreleme</div>
-            <img
-              src="signal-protocol.png"
-              alt="Signal Protocol Diagram"
-              class="signal-img"
-            />
+            <div class="tech-title">Yapay Zeka - Duygu Analizi</div>
+            <img src="yapayzeka1.png" alt="BERTurk Model" />
+            <div
+              style="
+                padding: 8px;
+                background: #f0f4f8;
+                border-radius: 8px;
+                margin-top: 5px;
+              "
+            >
+              <div
+                class="text-item"
+                style="border-left-color: #004078; text-align: left"
+              >
+                <span class="flow-step-title blue" style="font-size: 16pt"
+                  >BERTurk ve Dijital Empati</span
+                >
+                <span
+                  class="flow-desc"
+                  style="font-size: 14pt; line-height: 1.3"
+                >
+                  Mesajlar anlık analiz edilerek duygusal ton (Pozitif, Negatif,
+                  Nötr) belirlenir ve geri bildirim sunulur.
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
